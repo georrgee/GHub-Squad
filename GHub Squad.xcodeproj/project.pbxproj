@@ -11,6 +11,11 @@
 		36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3423BB0672003378DD /* SceneDelegate.swift */; };
 		36C08D3C23BB0674003378DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3B23BB0674003378DD /* Assets.xcassets */; };
 		36C08D3F23BB0674003378DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3D23BB0674003378DD /* LaunchScreen.storyboard */; };
+		36C08D4723BB0E04003378DD /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4623BB0E04003378DD /* SearchController.swift */; };
+		36C08D4923BB0E2F003378DD /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4823BB0E2F003378DD /* FavoritesController.swift */; };
+		36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4A23BB14B0003378DD /* GFButton.swift */; };
+		36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4C23BBC893003378DD /* GFTextField.swift */; };
+		36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4F23BC002D003378DD /* UIView+Layout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		36C08D3B23BB0674003378DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36C08D3E23BB0674003378DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36C08D4023BB0674003378DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36C08D4623BB0E04003378DD /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		36C08D4823BB0E2F003378DD /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		36C08D4A23BB14B0003378DD /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
+		36C08D4C23BBC893003378DD /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		36C08D4F23BC002D003378DD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +62,26 @@
 		36C08D3123BB0672003378DD /* GHub Squad */ = {
 			isa = PBXGroup;
 			children = (
+				36C08D4E23BBFFE2003378DD /* Helpers */,
 				36C08D3223BB0672003378DD /* AppDelegate.swift */,
 				36C08D3423BB0672003378DD /* SceneDelegate.swift */,
 				36C08D3B23BB0674003378DD /* Assets.xcassets */,
 				36C08D3D23BB0674003378DD /* LaunchScreen.storyboard */,
 				36C08D4023BB0674003378DD /* Info.plist */,
+				36C08D4623BB0E04003378DD /* SearchController.swift */,
+				36C08D4823BB0E2F003378DD /* FavoritesController.swift */,
+				36C08D4A23BB14B0003378DD /* GFButton.swift */,
+				36C08D4C23BBC893003378DD /* GFTextField.swift */,
 			);
 			path = "GHub Squad";
+			sourceTree = "<group>";
+		};
+		36C08D4E23BBFFE2003378DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				36C08D4F23BC002D003378DD /* UIView+Layout.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */,
+				36C08D4723BB0E04003378DD /* SearchController.swift in Sources */,
+				36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */,
 				36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */,
 				36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */,
+				36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */,
+				36C08D4923BB0E2F003378DD /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

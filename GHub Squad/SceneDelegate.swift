@@ -1,10 +1,7 @@
-//
 //  SceneDelegate.swift
 //  GHub Squad
-//
 //  Created by George Garcia on 12/30/19.
 //  Copyright © 2019 GeeTeam. All rights reserved.
-//
 
 import UIKit
 
@@ -16,13 +13,45 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds) // fills up the whole screen
-        // every window has a window scene
         
         window?.windowScene = windowScene
         
         // setting the root view controller
-        window?.rootViewController = ViewController()
+        window?.rootViewController = createTabbar()
         window?.makeKeyAndVisible()
+    }
+    
+//    func createSearchNavigationController() -> UINavigationController {
+//        let searchVC        = SearchController()
+//        searchVC.title      = "Search"
+//        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//
+//        return UINavigationController(rootViewController: searchVC)
+//    }
+//
+//    func createFavoritesNavigationController() -> UINavigationController {
+//        let favoritesVC        = FavoritesController()
+//        favoritesVC.title      = "Favorites"
+//        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//
+//        return UINavigationController(rootViewController: favoritesVC)
+//    }
+    
+    func createNavigationController(viewController: UIViewController, title: String, tabBarItem: UITabBarItem) -> UINavigationController {
+        let viewController        = viewController
+        viewController.title      = title
+        viewController.tabBarItem = tabBarItem
+        
+        return UINavigationController(rootViewController: viewController)
+    }
+    
+    func createTabbar() -> UITabBarController {
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen // Appearance = Overall
+        //tabbar.viewControllers = [searchNavigationController, favoritesNavigationController]
+        tabbar.viewControllers = [createNavigationController(viewController: SearchController(), title: "Search", tabBarItem: .init(tabBarSystemItem: .search, tag: 0)),
+                                  createNavigationController(viewController: FavoritesController(), title: "Favorites", tabBarItem: .init(tabBarSystemItem: .favorites, tag: 1))]
+        return tabbar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,10 +81,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
 
 //         guard let _ = (scene as? UIWindowScene) else { return } // underscore: variable exists but not giving a name
+
+// every window has a window scene
 
