@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3223BB0672003378DD /* AppDelegate.swift */; };
 		36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3423BB0672003378DD /* SceneDelegate.swift */; };
-		36C08D3723BB0672003378DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3623BB0672003378DD /* ViewController.swift */; };
-		36C08D3A23BB0672003378DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3823BB0672003378DD /* Main.storyboard */; };
 		36C08D3C23BB0674003378DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3B23BB0674003378DD /* Assets.xcassets */; };
 		36C08D3F23BB0674003378DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3D23BB0674003378DD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +17,6 @@
 		36C08D2F23BB0672003378DD /* GHub Squad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GHub Squad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C08D3223BB0672003378DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C08D3423BB0672003378DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		36C08D3623BB0672003378DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		36C08D3923BB0672003378DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36C08D3B23BB0674003378DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36C08D3E23BB0674003378DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36C08D4023BB0674003378DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +54,6 @@
 			children = (
 				36C08D3223BB0672003378DD /* AppDelegate.swift */,
 				36C08D3423BB0672003378DD /* SceneDelegate.swift */,
-				36C08D3623BB0672003378DD /* ViewController.swift */,
-				36C08D3823BB0672003378DD /* Main.storyboard */,
 				36C08D3B23BB0674003378DD /* Assets.xcassets */,
 				36C08D3D23BB0674003378DD /* LaunchScreen.storyboard */,
 				36C08D4023BB0674003378DD /* Info.plist */,
@@ -127,7 +121,6 @@
 			files = (
 				36C08D3F23BB0674003378DD /* LaunchScreen.storyboard in Resources */,
 				36C08D3C23BB0674003378DD /* Assets.xcassets in Resources */,
-				36C08D3A23BB0672003378DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +131,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36C08D3723BB0672003378DD /* ViewController.swift in Sources */,
 				36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */,
 				36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +139,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		36C08D3823BB0672003378DD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				36C08D3923BB0672003378DD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		36C08D3D23BB0674003378DD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +278,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.GeeTeam.GHub-Squad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.GeeTeam.GHub-Squad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
