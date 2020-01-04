@@ -18,6 +18,10 @@
 		36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4C23BBC893003378DD /* GFTextField.swift */; };
 		36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4F23BC002D003378DD /* UIView+Layout.swift */; };
 		36F2805B23C067CC00A3D95B /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2805A23C067CC00A3D95B /* String+Ext.swift */; };
+		36F2805D23C069D800A3D95B /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2805C23C069D800A3D95B /* GFTitleLabel.swift */; };
+		36F2805F23C06B5700A3D95B /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2805E23C06B5700A3D95B /* GFBodyLabel.swift */; };
+		36F2806123C06C1B00A3D95B /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2806023C06C1B00A3D95B /* GFAlertVC.swift */; };
+		36F2806323C0726300A3D95B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2806223C0726300A3D95B /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		36C08D4C23BBC893003378DD /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		36C08D4F23BC002D003378DD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		36F2805A23C067CC00A3D95B /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		36F2805C23C069D800A3D95B /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
+		36F2805E23C06B5700A3D95B /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
+		36F2806023C06C1B00A3D95B /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
+		36F2806223C0726300A3D95B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,9 @@
 				36C08D4A23BB14B0003378DD /* GFButton.swift */,
 				36C08D4C23BBC893003378DD /* GFTextField.swift */,
 				366E0B9B23BE73F000864C32 /* FollowersListController.swift */,
+				36F2805C23C069D800A3D95B /* GFTitleLabel.swift */,
+				36F2805E23C06B5700A3D95B /* GFBodyLabel.swift */,
+				36F2806023C06C1B00A3D95B /* GFAlertVC.swift */,
 			);
 			path = "GHub Squad";
 			sourceTree = "<group>";
@@ -86,6 +97,7 @@
 			children = (
 				36C08D4F23BC002D003378DD /* UIView+Layout.swift */,
 				36F2805A23C067CC00A3D95B /* String+Ext.swift */,
+				36F2806223C0726300A3D95B /* UIViewController+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -161,13 +173,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				36F2805B23C067CC00A3D95B /* String+Ext.swift in Sources */,
+				36F2806323C0726300A3D95B /* UIViewController+Ext.swift in Sources */,
 				36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */,
 				36C08D4723BB0E04003378DD /* SearchController.swift in Sources */,
 				36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */,
+				36F2806123C06C1B00A3D95B /* GFAlertVC.swift in Sources */,
 				36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */,
 				36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */,
+				36F2805F23C06B5700A3D95B /* GFBodyLabel.swift in Sources */,
 				366E0B9C23BE73F000864C32 /* FollowersListController.swift in Sources */,
 				36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */,
+				36F2805D23C069D800A3D95B /* GFTitleLabel.swift in Sources */,
 				36C08D4923BB0E2F003378DD /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

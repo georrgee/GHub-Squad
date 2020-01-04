@@ -65,6 +65,7 @@ class SearchController: UIViewController {
         
         guard isUsernameEntered else { 
             print("NO USERNAME!")
+            presentGFAlertOnMainThread(title: "Empty Username!", message: "Oops! Looks like there is no username. Please enter a valid username so we can know who to look for 😬", buttonTitle: "Sounds good")
             return
         }
         let followersVC      = FollowersListController()
@@ -109,5 +110,7 @@ extension SearchController: UITextFieldDelegate {
  //            callToActionButton.heightAnchor.constraint(equalToConstant: 50)
  //        ])
  
+ 
+ // command + control + spacebar
  
  */
