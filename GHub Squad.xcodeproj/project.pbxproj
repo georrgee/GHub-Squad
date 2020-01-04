@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		366E0B9C23BE73F000864C32 /* FollowersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E0B9B23BE73F000864C32 /* FollowersListController.swift */; };
 		36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3223BB0672003378DD /* AppDelegate.swift */; };
 		36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D3423BB0672003378DD /* SceneDelegate.swift */; };
 		36C08D3C23BB0674003378DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C08D3B23BB0674003378DD /* Assets.xcassets */; };
@@ -16,9 +17,11 @@
 		36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4A23BB14B0003378DD /* GFButton.swift */; };
 		36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4C23BBC893003378DD /* GFTextField.swift */; };
 		36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C08D4F23BC002D003378DD /* UIView+Layout.swift */; };
+		36F2805B23C067CC00A3D95B /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2805A23C067CC00A3D95B /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		366E0B9B23BE73F000864C32 /* FollowersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListController.swift; sourceTree = "<group>"; };
 		36C08D2F23BB0672003378DD /* GHub Squad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GHub Squad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C08D3223BB0672003378DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C08D3423BB0672003378DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		36C08D4A23BB14B0003378DD /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		36C08D4C23BBC893003378DD /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		36C08D4F23BC002D003378DD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		36F2805A23C067CC00A3D95B /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 				36C08D4823BB0E2F003378DD /* FavoritesController.swift */,
 				36C08D4A23BB14B0003378DD /* GFButton.swift */,
 				36C08D4C23BBC893003378DD /* GFTextField.swift */,
+				366E0B9B23BE73F000864C32 /* FollowersListController.swift */,
 			);
 			path = "GHub Squad";
 			sourceTree = "<group>";
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				36C08D4F23BC002D003378DD /* UIView+Layout.swift */,
+				36F2805A23C067CC00A3D95B /* String+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -154,11 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F2805B23C067CC00A3D95B /* String+Ext.swift in Sources */,
 				36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */,
 				36C08D4723BB0E04003378DD /* SearchController.swift in Sources */,
 				36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */,
 				36C08D3323BB0672003378DD /* AppDelegate.swift in Sources */,
 				36C08D3523BB0672003378DD /* SceneDelegate.swift in Sources */,
+				366E0B9C23BE73F000864C32 /* FollowersListController.swift in Sources */,
 				36C08D5023BC002D003378DD /* UIView+Layout.swift in Sources */,
 				36C08D4923BB0E2F003378DD /* FavoritesController.swift in Sources */,
 			);

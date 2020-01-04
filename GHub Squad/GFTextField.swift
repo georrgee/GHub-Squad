@@ -29,6 +29,8 @@ class GFTextField: UITextField {
         backgroundColor    = .tertiarySystemBackground // very lighter color but not super bold
         autocorrectionType = .no
         
+        returnKeyType      = .go
+        
         placeholder = "Tap to enter a username"
         
     }
