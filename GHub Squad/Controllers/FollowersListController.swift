@@ -15,15 +15,22 @@ class FollowersListController: UIViewController {
         view.backgroundColor = .systemBackground
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        NetworkManager.shared.getFollowers(for: username, page: 1) { (followers, errorMessage) in
-            guard let followers = followers else {
-                self.presentGFAlertOnMainThread(title: "Test - Bad Stuff", message: errorMessage!.rawValue, buttonTitle: "Thank you!")
-                return
-            }
+        fetchFollowers()
+    }
+    
+    func fetchFollowers() {
+        NetworkManager.shared.getFollowers(for: username, page: 1) { (result) in
             
-            print("Followers.count = \(followers.count)")
-            print(followers)
+            switch result {
+                case .success(let followers):
+                    print("Followers.count = \(followers.count)")
+                    print(followers)
+                case .failure(let error):
+                    print("Error on getFollowers!")
+                    self.presentGFAlertOnMainThread(title: "Test - Bad Stuff", message: error.rawValue, buttonTitle: "Thank you!")
+                default:
+                    return
+            }
         }
     }
     
