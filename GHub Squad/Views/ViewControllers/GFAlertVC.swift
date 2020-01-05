@@ -53,8 +53,8 @@ class GFAlertVC: UIViewController {
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
+        containerView.anchor(top: .none, leading: .none, bottom: .none, trailing: .none, size: .init(width: 280, height: 250))
         containerView.centerInSuperview()
-        containerView.anchor(top: .none, leading: .none, bottom: .none, trailing: .none, size: .init(width: 280, height: 280))
     }
     
     func configureTitleLabel() {
