@@ -26,8 +26,8 @@ class SearchController: UIViewController {
     override func viewWillAppear(_ animated: Bool) { // gets called whenever you go to a specific screen
         super.viewWillAppear(animated) // most of the time you want to call the super. if you didnt call the super, you dont want the parent function to be called where you get all the funtionality for free
         
-        navigationController?.isNavigationBarHidden = true
-        
+        //navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func createDismissKeyboardTapGesture() {
