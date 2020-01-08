@@ -7,9 +7,14 @@ import UIKit
 
 class FollowersListController: UIViewController {
     
-    var username: String!
+    enum Section { // enums are hasable by default
+        case main
+    }
     
+    var username: String!
+    var followers: [Follower] = []
     var collectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>! // declaring the data sourc
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +22,7 @@ class FollowersListController: UIViewController {
         configureCollectionView()
         configureViewController()
         fetchFollowers()
+        configureDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,10 +37,10 @@ class FollowersListController: UIViewController {
     }
     
     private func configureCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
         view.addSubview(collectionView)
         
-        collectionView.backgroundColor = .systemPink
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
         
     }
@@ -59,8 +65,8 @@ class FollowersListController: UIViewController {
             
             switch result {
                 case .success(let followers):
-                    print("Followers.count = \(followers.count)")
-                    print(followers)
+                    self.followers = followers
+                    self.updateData()
                 case .failure(let error):
                     print("Error on getFollowers!")
                     self.presentGFAlertOnMainThread(title: "Test - Bad Stuff", message: error.rawValue, buttonTitle: "Thank you!")
@@ -69,6 +75,23 @@ class FollowersListController: UIViewController {
             }
         }
     }
+    
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+            cell.set(follower: follower)
+            return cell
+        })
+    }
+    
+    private func updateData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) } // dont need anything in completion (after it completes) 
+    }
 }
 
 // when passing data, you need to pass a variable on this screen (This ViewController) to be set
+// diffabledata source = table and collection view
+// Diffable Data Source = when its dynamic, apple introduces this where you no longer need to deal with indexPaths

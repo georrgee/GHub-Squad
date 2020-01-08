@@ -5,9 +5,12 @@
 
 import Foundation
 
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     
     var login:      String
     var avatarUrl:  String
     
 }
+
+// String is already Hashable
+

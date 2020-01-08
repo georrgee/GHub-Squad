@@ -10,11 +10,10 @@ import UIKit
 
 class GFAvatarImageView: UIImageView {
     
-    let placeHolderImage = #imageLiteral(resourceName: "avatar-placeholder")
+    let placeHolderImage = #imageLiteral(resourceName: "avatar-placeholder").withRenderingMode(.alwaysOriginal)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configure()
     }
     
@@ -22,7 +21,7 @@ class GFAvatarImageView: UIImageView {
         layer.cornerRadius = 10
         clipsToBounds      = true // you want the image to be inside the imageview
         image              = placeHolderImage
-        
+        contentMode        = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false
     }
     
