@@ -112,6 +112,6 @@ extension SearchController: UITextFieldDelegate {
  //        ])
  
  
- // command + control + spacebar
+ // command + control + spacebar for Emojis 
  
  */
