@@ -16,7 +16,7 @@ class FollowersListController: UIViewController {
         
         configureCollectionView()
         configureViewController()
-        fetchFollowers() 
+        fetchFollowers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +37,21 @@ class FollowersListController: UIViewController {
         collectionView.backgroundColor = .systemPink
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
         
+    }
+    
+    private func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout {
+        
+        let width                       = view.bounds.width
+        let paddingInset: CGFloat       = 12
+        let minimumItemSpacing: CGFloat = 10
+        let availableWidth              = width - (paddingInset * 2) - (minimumItemSpacing * 2)
+        let itemWidth                   = availableWidth /  3
+        
+        let flowLayout          = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: paddingInset, left: paddingInset, bottom: paddingInset, right: paddingInset)
+        flowLayout.itemSize     = CGSize(width: itemWidth, height: itemWidth + 40)
+        
+        return flowLayout
     }
     
     private func fetchFollowers() {
