@@ -8,13 +8,14 @@
 // Pros: Convenience
 // Cons: One global. It can be mutated, globally. Monolith: giant file that holds everything
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-    let baseURL       = "https://api.github.com/users/"
-    let perPage       = "per_page=100"
+    private let baseURL       = "https://api.github.com/users/"
+    let perPage               = "per_page=100"
+    let cache                 = NSCache<NSString, UIImage>()
     
     private init() {}
     
@@ -62,3 +63,4 @@ class NetworkManager {
 }
 
 // completion handler = Closures
+// NS = Next Step
