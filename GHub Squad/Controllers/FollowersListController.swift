@@ -13,13 +13,15 @@ class FollowersListController: UIViewController {
     var followers: [Follower] = []
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>! // declaring the data sourc
+    var page: Int = 1
+    var hasMoreFollowers: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCollectionView()
         configureViewController()
-        fetchFollowers()
+        fetchFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -37,19 +39,20 @@ class FollowersListController: UIViewController {
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
-        
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
         
     }
     
-    private func fetchFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] (result) in
+    private func fetchFollowers(username: String, page: Int) {
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
                 case .success(let followers):
-                    self.followers = followers
+                    if followers.count < 100 { self.hasMoreFollowers = false }
+                    self.followers.append(contentsOf: followers) // 100 in the array, download the next page, then add the next followers in the array
                     self.updateData()
                 case .failure(let error):
                     print("Error on getFollowers!")
@@ -73,6 +76,21 @@ class FollowersListController: UIViewController {
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) } // dont need anything in completion (after it completes) 
     }
 }
+
+extension FollowersListController: UICollectionViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y    // up and down (how far we scroll down)
+        let contentHeight = scrollView.contentSize.height // entire scrollview
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMoreFollowers else { return }
+            page += 1
+            fetchFollowers(username: username, page: page)
+        }
+    }
+}
+
 
 // when passing data, you need to pass a variable on this screen (This ViewController) to be set
 // diffabledata source = table and collection view
