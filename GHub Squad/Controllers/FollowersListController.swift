@@ -46,9 +46,11 @@ class FollowersListController: UIViewController {
     }
     
     private func fetchFollowers(username: String, page: Int) {
+        showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
-            
+            self.dismissLoadingView()
+
             switch result {
                 case .success(let followers):
                     if followers.count < 100 { self.hasMoreFollowers = false }
@@ -96,4 +98,7 @@ extension FollowersListController: UICollectionViewDelegate {
 // diffabledata source = table and collection view
 // Diffable Data Source = when its dynamic, apple introduces this where you no longer need to deal with indexPaths
 
+
+// What to do for slow connection
+// you can go to the simulator settings and test for slow connection
 
