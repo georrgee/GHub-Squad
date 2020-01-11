@@ -55,6 +55,11 @@ class FollowersListController: UIViewController {
                 case .success(let followers):
                     if followers.count < 100 { self.hasMoreFollowers = false }
                     self.followers.append(contentsOf: followers) // 100 in the array, download the next page, then add the next followers in the array
+                    if self.followers.isEmpty { // isEmpty is more optimized than count == 0
+                        let message = "\(self.username ?? "This user") doesn't have any followers! Give them some love ❤️"
+                        DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+                        return
+                    }
                     self.updateData()
                 case .failure(let error):
                     print("Error on getFollowers!")
