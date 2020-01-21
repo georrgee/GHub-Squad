@@ -11,6 +11,7 @@ class FollowersListController: UIViewController {
     
     var username: String!
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>! // declaring the data sourc
     var page: Int = 1
@@ -20,6 +21,7 @@ class FollowersListController: UIViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        configureSearchController()
         configureViewController()
         fetchFollowers(username: username, page: page)
         configureDataSource()
@@ -60,7 +62,7 @@ class FollowersListController: UIViewController {
                         DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
                         return
                     }
-                    self.updateData()
+                    self.updateData(on: self.followers)
                 case .failure(let error):
                     print("Error on getFollowers!")
                     self.presentGFAlertOnMainThread(title: "Test - Bad Stuff", message: error.rawValue, buttonTitle: "Thank you!")
@@ -76,11 +78,20 @@ class FollowersListController: UIViewController {
         })
     }
     
-    private func updateData() {
+    private func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) } // dont need anything in completion (after it completes) 
+    }
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater                 = self
+        searchController.searchBar.delegate                   = self
+        searchController.searchBar.placeholder                = "Search username"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController                       = searchController
     }
 }
 
@@ -98,6 +109,21 @@ extension FollowersListController: UICollectionViewDelegate {
     }
 }
 
+extension FollowersListController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        
+        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        updateData(on: filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData(on: followers)
+    }
+    
+}
+
 
 // when passing data, you need to pass a variable on this screen (This ViewController) to be set
 // diffabledata source = table and collection view
@@ -106,4 +132,6 @@ extension FollowersListController: UICollectionViewDelegate {
 
 // What to do for slow connection
 // you can go to the simulator settings and test for slow connection
+
+// going through followers array, $0 = item that you are on, check the login, you want to lower case it (that way case sensitive isnt a problem), if it contains the filter, throw that to the filter array
 
