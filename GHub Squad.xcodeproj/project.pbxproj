@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36529F5A23D8ED0B00ABB8A4 /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36529F5923D8ED0B00ABB8A4 /* UserInfoController.swift */; };
 		366E0B9C23BE73F000864C32 /* FollowersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E0B9B23BE73F000864C32 /* FollowersListController.swift */; };
 		36A119AD23C15E26009B0AE7 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A119AC23C15E26009B0AE7 /* Follower.swift */; };
 		36A119AF23C15F01009B0AE7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A119AE23C15F01009B0AE7 /* User.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36529F5923D8ED0B00ABB8A4 /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		366E0B9B23BE73F000864C32 /* FollowersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListController.swift; sourceTree = "<group>"; };
 		36A119AC23C15E26009B0AE7 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		36A119AE23C15F01009B0AE7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				36C08D4623BB0E04003378DD /* SearchController.swift */,
 				36C08D4823BB0E2F003378DD /* FavoritesController.swift */,
 				366E0B9B23BE73F000864C32 /* FollowersListController.swift */,
+				36529F5923D8ED0B00ABB8A4 /* UserInfoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				36F2806323C0726300A3D95B /* UIViewController+Ext.swift in Sources */,
 				36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */,
 				36A119B223C16339009B0AE7 /* NetworkManager.swift in Sources */,
+				36529F5A23D8ED0B00ABB8A4 /* UserInfoController.swift in Sources */,
 				36C08D4723BB0E04003378DD /* SearchController.swift in Sources */,
 				36C08D4B23BB14B0003378DD /* GFButton.swift in Sources */,
 				36F2806123C06C1B00A3D95B /* GFAlertVC.swift in Sources */,
