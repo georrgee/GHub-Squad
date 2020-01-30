@@ -1,4 +1,4 @@
-//  ErrorMessage.swift
+//  GFError.swift
 //  GHub Squad
 //  Created by George Garcia on 1/4/20.
 //  Copyright © 2020 GeeTeam. All rights reserved.
@@ -12,3 +12,4 @@ enum GFError: String, Error {
     case invalidData      = "The data received from the server was invalid. Please try again"
 }
 
+// changed comment title from ErrorMessage to GFError
