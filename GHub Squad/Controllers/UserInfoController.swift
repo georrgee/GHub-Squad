@@ -7,6 +7,8 @@ import UIKit
 
 class UserInfoController: UIViewController {
     
+    let headerView = UIView()
+    
     var userName: String!
 
     override func viewDidLoad() {
@@ -14,6 +16,7 @@ class UserInfoController: UIViewController {
         
         view.backgroundColor = .systemBackground
         createNavBarUI()
+        layoutUI()
         getUserInfo()
     }
     
@@ -28,11 +31,28 @@ class UserInfoController: UIViewController {
             
             switch result {
             case .success(let user):
-                print(user.login)
+                DispatchQueue.main.async {
+                    self.add(childVC: GFUserInfoHeaderController(user: user), to: self.headerView)
+                }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong...", message: error.rawValue, buttonTitle: "Okay")
             }
         }
+    }
+    
+    func layoutUI() {
+        view.addSubview(headerView)
+        
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 180))
+    }
+    
+    func add(childVC: UIViewController, to containerView: UIView) {
+        addChild(childVC)
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
+        childVC.didMove(toParent: self)
     }
     
     @objc func dismissViewController() {
