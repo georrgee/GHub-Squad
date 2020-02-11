@@ -63,19 +63,19 @@ class GFUserInfoHeaderController: UIViewController {
         
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        avatarImageView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: .none, padding: .init(top: padding, left: padding, bottom: 0, right: 0    ), size: .init(width: 90, height: 90))
+        avatarImageView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: .none, padding: .init(top: padding, left: 0, bottom: 0, right: 0), size: .init(width: 90, height: 90))
         
-        usernameLabel.anchor(top: avatarImageView.topAnchor, leading: avatarImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: textImagePadding, bottom: 0, right: padding), size: .init(width: 0, height: 38))
+        usernameLabel.anchor(top: avatarImageView.topAnchor, leading: avatarImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: textImagePadding, bottom: 0, right: 0), size: .init(width: 0, height: 38))
         
         nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: 8).isActive = true
-        nameLabel.anchor(top: .none, leading: avatarImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: textImagePadding, bottom: 0, right: padding), size: .init(width: 0, height: 20))
+        nameLabel.anchor(top: .none, leading: avatarImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: textImagePadding, bottom: 0, right: 0), size: .init(width: 0, height: 20))
         
         locationImageView.anchor(top: .none, leading: avatarImageView.trailingAnchor, bottom: avatarImageView.bottomAnchor, trailing: .none, padding: .init(top: 0, left: textImagePadding, bottom: 0, right: 0), size: .init(width: 20, height: 20))
         
         locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor).isActive = true
-        locationLabel.anchor(top: .none, leading: locationImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: padding), size: .init(width: 0, height: 20))
+        locationLabel.anchor(top: .none, leading: locationImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 0), size: .init(width: 0, height: 20))
         
-        bioLabel.anchor(top: avatarImageView.bottomAnchor, leading: avatarImageView.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: textImagePadding, left: 0, bottom: 0, right: padding), size: .init(width: 0, height: 60))
+        bioLabel.anchor(top: avatarImageView.bottomAnchor, leading: avatarImageView.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: textImagePadding, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 60))
     }
 
 }

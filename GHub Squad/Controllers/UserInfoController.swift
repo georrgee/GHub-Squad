@@ -7,14 +7,16 @@ import UIKit
 
 class UserInfoController: UIViewController {
     
-    let headerView = UIView()
+    let headerView       = UIView()
+    let itemViewOne      = UIView()
+    let itemViewTwo      = UIView()
+    var itemViews: [UIView] = []
     
     var userName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
         createNavBarUI()
         layoutUI()
         getUserInfo()
@@ -41,11 +43,34 @@ class UserInfoController: UIViewController {
     }
     
     func layoutUI() {
-        view.addSubview(headerView)
         
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+
+        itemViews = [headerView, itemViewOne, itemViewTwo]
         
-        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 180))
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+        }
+                
+        let padding: CGFloat    = 20
+        let itemHeight: CGFloat = 140
+        
+        itemViewOne.backgroundColor = .systemPink
+        itemViewTwo.backgroundColor = .systemBlue
+        
+        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 180))
+        
+        itemViewOne.anchor(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
+        
+        NSLayoutConstraint.activate([
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
+        ])
+        
+//        itemViewTwo.anchor(top: itemViewOne.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
     }
     
     func add(childVC: UIViewController, to containerView: UIView) {
