@@ -28,6 +28,11 @@ class GFButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false // this basically says we want to use AutoLayout
     }
     
+    func set(backgroundColor: UIColor, title: String) {
+        self.backgroundColor = backgroundColor
+        setTitle(title, for: .normal)
+    }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
