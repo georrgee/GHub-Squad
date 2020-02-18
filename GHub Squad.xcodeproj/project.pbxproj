@@ -38,6 +38,7 @@
 		36F2805F23C06B5700A3D95B /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2805E23C06B5700A3D95B /* GFBodyLabel.swift */; };
 		36F2806123C06C1B00A3D95B /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2806023C06C1B00A3D95B /* GFAlertVC.swift */; };
 		36F2806323C0726300A3D95B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F2806223C0726300A3D95B /* UIViewController+Ext.swift */; };
+		36F91AA723FB623E0021BE22 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F91AA623FB623E0021BE22 /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		36F2805E23C06B5700A3D95B /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		36F2806023C06C1B00A3D95B /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		36F2806223C0726300A3D95B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		36F91AA623FB623E0021BE22 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				36C08D4F23BC002D003378DD /* UIView+Layout.swift */,
 				36F2805A23C067CC00A3D95B /* String+Ext.swift */,
 				36F2806223C0726300A3D95B /* UIViewController+Ext.swift */,
+				36F91AA623FB623E0021BE22 /* Date+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				36F2806323C0726300A3D95B /* UIViewController+Ext.swift in Sources */,
 				36E1387E23F32E9600EC7373 /* GFRepoItemController.swift in Sources */,
 				36C08D4D23BBC893003378DD /* GFTextField.swift in Sources */,
+				36F91AA723FB623E0021BE22 /* Date+Ext.swift in Sources */,
 				36098A0923F262E800DBCABA /* GFItemInfoView.swift in Sources */,
 				36A119B223C16339009B0AE7 /* NetworkManager.swift in Sources */,
 				36529F5A23D8ED0B00ABB8A4 /* UserInfoController.swift in Sources */,

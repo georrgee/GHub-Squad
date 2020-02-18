@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol FollowersListVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowersListController: UIViewController {
     
     enum Section { case main } // enums are hasable by default
@@ -24,7 +28,7 @@ class FollowersListController: UIViewController {
         configureCollectionView()
         configureSearchController()
         configureViewController()
-        fetchFollowers(username: username, page: page)
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -48,7 +52,7 @@ class FollowersListController: UIViewController {
         
     }
     
-    private func fetchFollowers(username: String, page: Int) {
+    private func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
@@ -105,7 +109,7 @@ extension FollowersListController: UICollectionViewDelegate {
         if offsetY > contentHeight - height {
             guard hasMoreFollowers else { return }
             page += 1
-            fetchFollowers(username: username, page: page)
+            getFollowers(username: username, page: page)
         }
     }
     
@@ -116,6 +120,8 @@ extension FollowersListController: UICollectionViewDelegate {
         
         let destinationController = UserInfoController()
         destinationController.userName = follower.login
+        destinationController.delegate = self
+        
         let navigationController = UINavigationController(rootViewController: destinationController)
         present(navigationController, animated: true)
     }
@@ -136,6 +142,19 @@ extension FollowersListController: UISearchResultsUpdating, UISearchBarDelegate 
     }
 }
 
+extension FollowersListController: FollowersListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        // get followers for that user
+        self.username = username
+        title         = username
+        page          = 1
+        
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page)
+    }
+}
 
 // when passing data, you need to pass a variable on this screen (This ViewController) to be set
 // diffabledata source = table and collection view

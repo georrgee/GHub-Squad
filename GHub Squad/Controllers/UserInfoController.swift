@@ -5,18 +5,24 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: class {
+    func didTapGithubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
 class UserInfoController: UIViewController {
     
     let headerView       = UIView()
     let itemViewOne      = UIView()
     let itemViewTwo      = UIView()
+    let dateLabel        = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
     
     var userName: String!
+    weak var delegate: FollowersListVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         createNavBarUI()
         layoutUI()
         getUserInfo()
@@ -33,22 +39,33 @@ class UserInfoController: UIViewController {
             
             switch result {
             case .success(let user):
-                DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderController(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemController(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFollowerItemController(user: user), to: self.itemViewTwo)
-                }
+                DispatchQueue.main.async { self.configureUIElements(with: user) }
+                
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong...", message: error.rawValue, buttonTitle: "Okay")
             }
         }
     }
     
+    func configureUIElements(with user: User) {
+        
+        let repoItemVC      = GFRepoItemController(user: user)
+        repoItemVC.delegate = self
+        
+        let followerItemVC      = GFFollowerItemController(user: user)
+        followerItemVC.delegate = self
+        
+        self.add(childVC: GFUserInfoHeaderController(user: user), to: self.headerView)
+        self.add(childVC: repoItemVC, to: self.itemViewOne)
+        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.dateLabel.text = "Github user since \(user.createdAt.convertToDisplayFormat())"
+    }
+    
     func layoutUI() {
         
         view.backgroundColor = .systemBackground
 
-        itemViews = [headerView, itemViewOne, itemViewTwo]
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
         for itemView in itemViews {
             view.addSubview(itemView)
@@ -66,7 +83,12 @@ class UserInfoController: UIViewController {
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
             itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
         
 //        itemViewTwo.anchor(top: itemViewOne.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
@@ -84,6 +106,25 @@ class UserInfoController: UIViewController {
         dismiss(animated: true)
     }
 
+}
+
+extension UserInfoController: UserInfoVCDelegate {
+    func didTapGithubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URL!", message: "The url for this user is invalid", buttonTitle: "Got it")
+            return
+        }
+        presentSafariVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers... Oh well 😅", buttonTitle: "I see...")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismissViewController()
+    }
 }
 
 // closures are either nonescaping or escaping.
