@@ -21,7 +21,17 @@ class FollowersListController: UIViewController {
     var page: Int = 1
     var hasMoreFollowers: Bool = true
     var isSearching = false // by default (you are not searching... yet)
-
+    
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username = username
+        title         = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

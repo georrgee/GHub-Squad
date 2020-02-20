@@ -11,6 +11,7 @@ class SearchController: UIViewController {
     let logoImageView      = UIImageView()
     let usernameTextField  = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    var logoImageViewTopConstraint: NSLayoutConstraint!
     
     var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty } // computed property
 
@@ -28,20 +29,25 @@ class SearchController: UIViewController {
         
         //navigationController?.isNavigationBarHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)
+        usernameTextField.text = ""
     }
     
     func createDismissKeyboardTapGesture() {
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))) // causes the view to resign the first responder status
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))) // causes the view to resign the first responder status
         view.addGestureRecognizer(tap)
     }
     
     func configureLogoImageView() {
         view.addSubview(logoImageView) // just like adding an outlet when using storyboard
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = #imageLiteral(resourceName: "gh-logo")
+        logoImageView.image = Images.ghLogo
         
-        logoImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: .none, bottom: .none, trailing: .none, padding: .init(top: 80, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+        logoImageViewTopConstraint.isActive = true
+        
+        logoImageView.anchor(top: .none, leading: .none, bottom: .none, trailing: .none, padding: .init(top: 80, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
         logoImageView.centerXInSuperview()
     }
     
@@ -69,9 +75,9 @@ class SearchController: UIViewController {
             return
         }
         
-        let followersVC      = FollowersListController()
-        followersVC.username = usernameTextField.text
-        followersVC.title    = usernameTextField.text
+        usernameTextField.resignFirstResponder()
+        
+        let followersVC = FollowersListController(username: usernameTextField.text!)
         
         navigationController?.pushViewController(followersVC, animated: true)
     }

@@ -45,6 +45,7 @@ class FavoritesController: UIViewController {
             case .success(let favorites):
                 
                 if favorites.isEmpty {
+                    self.tableView.isHidden = true
                     self.showEmptyStateView(with: "You don't have any favorites!\nAdd a person from the Follower screen", in: self.view)
                 } else {
                     self.favoritesArray = favorites
@@ -76,18 +77,21 @@ extension FavoritesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favoritesArray[indexPath.row]
-        let destVC   = FollowersListController()
-        destVC.username = favorite.login
-        destVC.title    = favorite.login
-        
+        let destVC   = FollowersListController(username: favorite.login)        
         navigationController?.pushViewController(destVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         guard editingStyle == .delete else { return }
+        
         let favorite = favoritesArray[indexPath.row]
         favoritesArray.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        if favoritesArray.isEmpty {
+            tableView.isHidden = true
+        }
         
         PersistenceManager.updateWith(favoriteFollower: favorite, actionType: .remove) { [weak self] (error) in
             guard let self = self else { return }
