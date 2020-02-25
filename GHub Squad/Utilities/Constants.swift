@@ -6,11 +6,11 @@
 import UIKit
 
 enum SFSymbols {
-    static let location  = "mappin.and.ellipse"
-    static let repos     = "folder"
-    static let gists     = "text.alignleft"
-    static let followers = "heart"
-    static let following = "person.2"
+    static let location  = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysOriginal)
+    static let repos     = UIImage(systemName: "folder")?.withRenderingMode(.alwaysOriginal)
+    static let gists     = UIImage(systemName: "text.alignleft")?.withRenderingMode(.alwaysOriginal)
+    static let followers = UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal)
+    static let following = UIImage(systemName: "person.2")?.withRenderingMode(.alwaysOriginal)
 }
 
 enum ScreenSize {
@@ -21,7 +21,9 @@ enum ScreenSize {
 }
 
 enum Images {
-    static let ghLogo = UIImage(named: "gh-logo")
+    static let ghLogo           = UIImage(named: "gh-logo")
+    static let placeHolder      = UIImage(named: "avatar-placeholder")
+    static let emptyStateLogo   = UIImage(named: "empty-state-logo")
 }
 
 

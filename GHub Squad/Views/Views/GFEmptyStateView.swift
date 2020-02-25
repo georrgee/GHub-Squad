@@ -27,19 +27,27 @@ class GFEmptyStateView: UIView {
         messageLabel.numberOfLines = 3
         messageLabel.textColor     = .secondaryLabel
         
-        logoImageView.image = #imageLiteral(resourceName: "empty-state-logo")
+        logoImageView.image = Images.emptyStateLogo
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150).isActive = true
+        let labelCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -80 : -150
+        let logoBottomConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -80 : 40
+        
+        messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant).isActive = true
+        
         messageLabel.anchor(top: .none, leading: self.leadingAnchor, bottom: .none, trailing: self.trailingAnchor, padding: .init(top: 0, left: 40, bottom: 0, right: 40), size: .init(width: 0, height: 200))
         
-        logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: 1.3).isActive = true // take the width
-        logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, constant: 1.3).isActive = true
-        logoImageView.anchor(top: .none, leading: .none, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 40, right: -170))
+        logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3).isActive = true // take the width
+        logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3).isActive = true
+        logoImageView.anchor(top: .none, leading: .none, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: logoBottomConstant, right: -170))
     }
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
+
+//        let labelCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -50 : -150
+// let messageLabelCenterYConstraint = messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant).isActive = true

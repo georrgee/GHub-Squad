@@ -12,7 +12,7 @@ class GFAvatarImageView: UIImageView {
     
     
     let cache            = NetworkManager.shared.cache
-    let placeHolderImage = #imageLiteral(resourceName: "avatar-placeholder").withRenderingMode(.alwaysOriginal)
+    let placeHolderImage = Images.placeHolder?.withRenderingMode(.alwaysOriginal)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
