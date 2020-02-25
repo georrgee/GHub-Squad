@@ -8,13 +8,13 @@ class GFTitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
-        super.init(frame: .zero)
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        configure()
     }
     
     private func configure() {
@@ -31,3 +31,10 @@ class GFTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 }
+// benefits of a convenience initilizers
+// 1. instead of calling that super long 7 parameter initializer
+// 2. create a convience for default values for like 5 of those parameters
+// 3. then 2 can be different
+// Writing like a cleaner init method
+
+

@@ -32,6 +32,10 @@ class SearchController: UIViewController {
         usernameTextField.text = ""
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("SearchController: View Did Appear!")
+    }
+    
     func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:))) // causes the view to resign the first responder status
         view.addGestureRecognizer(tap)

@@ -7,7 +7,7 @@ import UIKit
 
 class GFAlertVC: UIViewController {
     
-    let containerView    = UIView()
+    let containerView    = GFAlertContainerView()
     let titleLabel       = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageBodyLabel = GFBodyLabel(textAlignment: .center)
     let actionButton     = GFButton(backgroundColor: .systemPink, title: "Okay!")
@@ -26,13 +26,9 @@ class GFAlertVC: UIViewController {
         self.buttonTitle = buttonTitle
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
         setupEntireLayout()
     }
@@ -45,14 +41,7 @@ class GFAlertVC: UIViewController {
     }
     
     func configureContainerView() {
-        view.addSubview(containerView)
-        containerView.layer.cornerRadius = 16
-        containerView.layer.borderWidth  = 2
-        containerView.layer.borderColor  = UIColor.white.cgColor
-        containerView.backgroundColor    = .systemBackground
-        
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.addSubview(containerView)        
         containerView.anchor(top: .none, leading: .none, bottom: .none, trailing: .none, size: .init(width: 280, height: 250))
         containerView.centerInSuperview()
     }
@@ -84,7 +73,10 @@ class GFAlertVC: UIViewController {
         
         messageBodyLabel.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: actionButton.topAnchor, trailing: containerView.trailingAnchor, padding: .init(top: 8, left: padding, bottom: 12, right: padding))
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // order of constraints matter

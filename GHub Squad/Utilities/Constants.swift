@@ -21,7 +21,7 @@ enum ScreenSize {
 }
 
 enum Images {
-    static let ghLogo = UIImage(named: "ghLogo")
+    static let ghLogo = UIImage(named: "gh-logo")
 }
 
 

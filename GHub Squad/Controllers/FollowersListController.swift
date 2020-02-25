@@ -9,7 +9,7 @@ protocol FollowersListVCDelegate: class {
     func didRequestFollowers(for username: String)
 }
 
-class FollowersListController: UIViewController {
+class FollowersListController: GFDataLoadingController {
     
     enum Section { case main } // enums are hasable by default
     
