@@ -18,6 +18,7 @@ class SearchController: UIViewController {
     override func viewDidLoad() { // gets called once
         super.viewDidLoad()
         view.backgroundColor = .systemBackground // Light mode = white, Dark Mode = black
+        view.addSubviews(logoImageView, usernameTextField, callToActionButton)
         configureLogoImageView()
         configureTextField()
         configureCallToActionButton()
@@ -42,7 +43,7 @@ class SearchController: UIViewController {
     }
     
     func configureLogoImageView() {
-        view.addSubview(logoImageView) // just like adding an outlet when using storyboard
+        //view.addSubview(logoImageView) // just like adding an outlet when using storyboard
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
         
@@ -56,18 +57,14 @@ class SearchController: UIViewController {
     }
     
     func configureTextField() {
-        view.addSubview(usernameTextField)
         
         usernameTextField.delegate = self // self being the SearchController itself
-        
         usernameTextField.anchor(top: logoImageView.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 48, left: 50, bottom: 0, right: 50), size: .init(width: 0, height: 50))
     }
     
     func configureCallToActionButton() {
-        view.addSubview(callToActionButton)
         
         callToActionButton.addTarget(self, action: #selector(pushToFollowersVC), for: .touchUpInside)
-        
         callToActionButton.anchor(top: .none, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 50, right: 50), size: .init(width: 0, height: 50))
     }
     

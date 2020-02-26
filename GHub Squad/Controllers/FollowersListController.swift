@@ -5,10 +5,6 @@
 
 import UIKit
 
-protocol FollowersListVCDelegate: class {
-    func didRequestFollowers(for username: String)
-}
-
 class FollowersListController: GFDataLoadingController {
     
     enum Section { case main } // enums are hasable by default
@@ -185,7 +181,7 @@ extension FollowersListController: UISearchResultsUpdating {
     }
 }
 
-extension FollowersListController: FollowersListVCDelegate {
+extension FollowersListController: UserInfoControllerDelegate {
     func didRequestFollowers(for username: String) {
         // get followers for that user
         self.username = username

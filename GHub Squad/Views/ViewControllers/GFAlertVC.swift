@@ -30,6 +30,7 @@ class GFAlertVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
+        view.addSubviews(containerView, titleLabel, actionButton, messageBodyLabel)
         setupEntireLayout()
     }
     
@@ -41,20 +42,17 @@ class GFAlertVC: UIViewController {
     }
     
     func configureContainerView() {
-        view.addSubview(containerView)        
         containerView.anchor(top: .none, leading: .none, bottom: .none, trailing: .none, size: .init(width: 280, height: 250))
         containerView.centerInSuperview()
     }
     
     func configureTitleLabel() {
-        containerView.addSubview(titleLabel)
         titleLabel.text = alertTitle ?? "Something went wrong" // ?? = nil colecing: use alerttile, if it is nil, give it a default value
         
         titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: .none, trailing: containerView.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 28))
     }
     
     func configureActionButton() {
-        containerView.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "Okay", for: .normal)
         actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
@@ -65,9 +63,7 @@ class GFAlertVC: UIViewController {
         dismiss(animated: true)
     }
     
-    func configureBodyLabel() {
-        containerView.addSubview(messageBodyLabel)
-        
+    func configureBodyLabel() {        
         messageBodyLabel.text          = message ?? "Unable to complete request"
         messageBodyLabel.numberOfLines = 4
         

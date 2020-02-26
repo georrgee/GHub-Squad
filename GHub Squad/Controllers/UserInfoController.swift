@@ -5,9 +5,8 @@
 
 import UIKit
 
-protocol UserInfoVCDelegate: class {
-    func didTapGithubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
+protocol UserInfoControllerDelegate: class {
+    func didRequestFollowers(for username: String)
 }
 
 class UserInfoController: GFDataLoadingController {
@@ -19,7 +18,7 @@ class UserInfoController: GFDataLoadingController {
     var itemViews: [UIView] = []
     
     var userName: String!
-    weak var delegate: FollowersListVCDelegate!
+    weak var delegate: UserInfoControllerDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +48,8 @@ class UserInfoController: GFDataLoadingController {
     
     func configureUIElements(with user: User) {
         
-        let repoItemVC      = GFRepoItemController(user: user)
-        repoItemVC.delegate = self
-        
-        let followerItemVC      = GFFollowerItemController(user: user)
-        followerItemVC.delegate = self
+        let repoItemVC          = GFRepoItemController(user: user, delegate: self)
+        let followerItemVC      = GFFollowerItemController(user: user, delegate: self)
         
         self.add(childVC: GFUserInfoHeaderController(user: user), to: self.headerView)
         self.add(childVC: repoItemVC, to: self.itemViewOne)
@@ -75,7 +71,7 @@ class UserInfoController: GFDataLoadingController {
         let padding: CGFloat    = 20
         let itemHeight: CGFloat = 140
         
-        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 180))
+        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 210))
         
         itemViewOne.anchor(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
         
@@ -88,7 +84,7 @@ class UserInfoController: GFDataLoadingController {
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
         
 //        itemViewTwo.anchor(top: itemViewOne.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))
@@ -108,7 +104,8 @@ class UserInfoController: GFDataLoadingController {
 
 }
 
-extension UserInfoController: UserInfoVCDelegate {
+extension UserInfoController: GFRepoItemControllerDelegate {
+    
     func didTapGithubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMainThread(title: "Invalid URL!", message: "The url for this user is invalid", buttonTitle: "Got it")
@@ -116,6 +113,9 @@ extension UserInfoController: UserInfoVCDelegate {
         }
         presentSafariVC(with: url)
     }
+}
+
+extension UserInfoController: GFFollowerItemControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {

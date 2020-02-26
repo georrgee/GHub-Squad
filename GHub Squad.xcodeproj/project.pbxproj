@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3605D7EF240723DE006F31F2 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605D7EE240723DE006F31F2 /* UIView+Ext.swift */; };
 		36098A0923F262E800DBCABA /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36098A0823F262E800DBCABA /* GFItemInfoView.swift */; };
 		363FC42123FC7DAF007FB9B1 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363FC42023FC7DAF007FB9B1 /* PersistenceManager.swift */; };
 		3644E93C23EA242300E1C68D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3644E93B23EA242300E1C68D /* Constants.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3605D7EE240723DE006F31F2 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		36098A0823F262E800DBCABA /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		363FC42023FC7DAF007FB9B1 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		3644E93B23EA242300E1C68D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				36F2805A23C067CC00A3D95B /* String+Ext.swift */,
 				36F2806223C0726300A3D95B /* UIViewController+Ext.swift */,
 				36F91AA623FB623E0021BE22 /* Date+Ext.swift */,
+				3605D7EE240723DE006F31F2 /* UIView+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				36F2805D23C069D800A3D95B /* GFTitleLabel.swift in Sources */,
 				36E4FDBD2404CA160068CBD1 /* GFDataLoadingController.swift in Sources */,
 				36C42B4023E9295C006B5607 /* GFUserInfoHeaderController.swift in Sources */,
+				3605D7EF240723DE006F31F2 /* UIView+Ext.swift in Sources */,
 				36E1388023F330B500EC7373 /* GFFollowerItemController.swift in Sources */,
 				36C08D4923BB0E2F003378DD /* FavoritesController.swift in Sources */,
 				36591D6223FF0DC200D34B6E /* GFTabBarController.swift in Sources */,

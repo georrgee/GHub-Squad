@@ -56,12 +56,7 @@ class GFUserInfoHeaderController: UIViewController {
     }
     
     func addSubviews() {
-        view.addSubview(avatarImageView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(locationImageView)
-        view.addSubview(locationLabel)
-        view.addSubview(bioLabel)
+        view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel)
     }
     
     func layoutUI() {
@@ -83,7 +78,7 @@ class GFUserInfoHeaderController: UIViewController {
         locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor).isActive = true
         locationLabel.anchor(top: .none, leading: locationImageView.trailingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 0), size: .init(width: 0, height: 20))
         
-        bioLabel.anchor(top: avatarImageView.bottomAnchor, leading: avatarImageView.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: textImagePadding, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 60))
+        bioLabel.anchor(top: avatarImageView.bottomAnchor, leading: avatarImageView.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: textImagePadding, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 90))
     }
 
 }
