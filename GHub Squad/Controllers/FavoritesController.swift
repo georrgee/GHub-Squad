@@ -33,7 +33,7 @@ class FavoritesController: GFDataLoadingController {
         tableView.rowHeight  = 80   // "Hey we, the cell rows, are going to be this tall
         tableView.delegate   = self
         tableView.dataSource = self
-        
+        tableView.removeExcessCells()
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
     }
     
@@ -85,18 +85,15 @@ extension FavoritesController: UITableViewDelegate, UITableViewDataSource {
         
         guard editingStyle == .delete else { return }
         
-        let favorite = favoritesArray[indexPath.row]
-        favoritesArray.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        if favoritesArray.isEmpty {
-            tableView.isHidden = true
-        }
-        
-        PersistenceManager.updateWith(favoriteFollower: favorite, actionType: .remove) { [weak self] (error) in
-            guard let self = self else { return }
-            guard let error = error else { return }
+        PersistenceManager.updateWith(favoriteFollower: favoritesArray[indexPath.row], actionType: .remove) { [weak self] (error) in
             
+            guard let self = self else { return }
+            
+            guard let error = error else {
+                self.favoritesArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+            }
             self.presentGFAlertOnMainThread(title: "Unable to remove user", message: error.rawValue, buttonTitle: "No problem")
         }
     }

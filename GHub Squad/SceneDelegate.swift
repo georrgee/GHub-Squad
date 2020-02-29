@@ -10,17 +10,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds) // fills up the whole screen
-        
         window?.windowScene = windowScene
         
         // setting the root view controller
         window?.rootViewController = GFTabBarController()
         window?.makeKeyAndVisible()
+        
         configureNavigationBar()
-        print("SceneDelegate: Will Connect To: Called (Loaded Up)")
+        
+        //print("SceneDelegate: Will Connect To: Called (Loaded Up)")
     }
     
     func configureNavigationBar() {
