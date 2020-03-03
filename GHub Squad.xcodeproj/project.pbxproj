@@ -529,13 +529,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2WCCWSFG99;
+				DEVELOPMENT_TEAM = J3GG5QZZ47;
 				INFOPLIST_FILE = "GHub Squad/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.GeeTeam.GHub-Squad";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GeeTeam.GHubSquad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -553,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.GeeTeam.GHub-Squad";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GeeTeam.GHubSquad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -11,6 +11,8 @@ protocol UserInfoControllerDelegate: class {
 
 class UserInfoController: GFDataLoadingController {
     
+    let scrollView       = UIScrollView()
+    let contentView      = UIView()
     let headerView       = UIView()
     let itemViewOne      = UIView()
     let itemViewTwo      = UIView()
@@ -23,6 +25,7 @@ class UserInfoController: GFDataLoadingController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createNavBarUI()
+        configureScrollView()
         layoutUI()
         getUserInfo()
     }
@@ -30,6 +33,17 @@ class UserInfoController: GFDataLoadingController {
     func createNavBarUI() {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    func configureScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        scrollView.pinToEdges(of: view)
+        contentView.pinToEdges(of: scrollView)
+        
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 600).isActive = true
     }
     
     func getUserInfo() {
@@ -59,18 +73,23 @@ class UserInfoController: GFDataLoadingController {
     
     func layoutUI() {
         
+        let padding: CGFloat = 20
+        let itemHeight: CGFloat = 140
+        
         view.backgroundColor = .systemBackground
 
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         
         for itemView in itemViews {
-            view.addSubview(itemView)
+            contentView.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
+            ])
         }
-                
-        let padding: CGFloat    = 20
-        let itemHeight: CGFloat = 140
-        
+    
         headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: 0, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: 210))
         
         itemViewOne.anchor(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: .none, trailing: view.trailingAnchor, padding: .init(top: padding, left: padding, bottom: 0, right: padding), size: .init(width: 0, height: itemHeight))

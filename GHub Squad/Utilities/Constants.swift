@@ -6,18 +6,11 @@
 import UIKit
 
 enum SFSymbols {
-    static let location  = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysOriginal)
-    static let repos     = UIImage(systemName: "folder")?.withRenderingMode(.alwaysOriginal)
-    static let gists     = UIImage(systemName: "text.alignleft")?.withRenderingMode(.alwaysOriginal)
-    static let followers = UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal)
-    static let following = UIImage(systemName: "person.2")?.withRenderingMode(.alwaysOriginal)
-}
-
-enum ScreenSize {
-    static let width        = UIScreen.main.bounds.size.width
-    static let height       = UIScreen.main.bounds.size.height
-    static let maxLength    = max(ScreenSize.width, ScreenSize.height)
-    static let minLength    = min(ScreenSize.width, ScreenSize.height)
+    static let location  = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.automatic)
+    static let repos     = UIImage(systemName: "folder")?.withRenderingMode(.automatic)
+    static let gists     = UIImage(systemName: "text.alignleft")?.withRenderingMode(.automatic)
+    static let followers = UIImage(systemName: "heart")?.withRenderingMode(.automatic)
+    static let following = UIImage(systemName: "person.2")?.withRenderingMode(.automatic)
 }
 
 enum Images {
@@ -26,6 +19,12 @@ enum Images {
     static let emptyStateLogo   = UIImage(named: "empty-state-logo")
 }
 
+enum ScreenSize {
+    static let width        = UIScreen.main.bounds.size.width
+    static let height       = UIScreen.main.bounds.size.height
+    static let maxLength    = max(ScreenSize.width, ScreenSize.height)
+    static let minLength    = min(ScreenSize.width, ScreenSize.height)
+}
 
 enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom

@@ -70,20 +70,24 @@ class FollowersListController: GFDataLoadingController {
 
             switch result {
                 case .success(let followers):
-                    if followers.count < 100 { self.hasMoreFollowers = false }
-                    self.followers.append(contentsOf: followers) // 100 in the array, download the next page, then add the next followers in the array
-                    if self.followers.isEmpty { // isEmpty is more optimized than count == 0
-                        let message = "\(self.username ?? "This user") doesn't have any followers! Give them some love ❤️"
-                        DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                        return
-                    }
-                    self.updateData(on: self.followers)
+                    self.updateUI(with: followers)
                 case .failure(let error):
                     print("Error on getFollowers!")
                     self.presentGFAlertOnMainThread(title: "Test - Bad Stuff", message: error.rawValue, buttonTitle: "Thank you!")
             }
             self.isLoadingMoreFollowers = false
         }
+    }
+    
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+         self.followers.append(contentsOf: followers) // 100 in the array, download the next page, then add the next followers in the array
+         if self.followers.isEmpty { // isEmpty is more optimized than count == 0
+             let message = "\(self.username ?? "This user") doesn't have any followers! Give them some love ❤️"
+             DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+             return
+         }
+         self.updateData(on: self.followers)
     }
     
     private func configureDataSource() {
@@ -119,22 +123,26 @@ class FollowersListController: GFDataLoadingController {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateWith(favoriteFollower: favorite, actionType: .add) { [weak self] (error) in
-                    guard let self = self else { return }
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Success!", message: "Nice! You just favorited this user! 🎉", buttonTitle: "Cool!")
-                        return
-                    }
-                    
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Got it")
-                }
-                
+                self.addUserToFavorites(user: user)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "No problem")
             }
         }
+    }
+    
+    func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateWith(favoriteFollower: favorite, actionType: .add) { [weak self] (error) in
+            guard let self = self else { return }
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Success!", message: "Nice! You just favorited this user! 🎉", buttonTitle: "Cool!")
+                return
+            }
+            
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Got it")
+        }
+                       
     }
 }
 

@@ -7,6 +7,11 @@ import UIKit
 
 extension UIView {
     
+    func pinToEdges(of superview: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        anchor(top: superview.topAnchor, leading: superview.leadingAnchor, bottom: superview.bottomAnchor, trailing: superview.trailingAnchor)
+    }
+    
     func addSubviews(_ views: UIView...) {
         for view in views {
             addSubview(view)
